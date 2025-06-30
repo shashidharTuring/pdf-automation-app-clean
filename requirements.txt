@@ -1,0 +1,28 @@
+
+
+
+
+
+
+
+openai
+python-dotenv
+PyMuPDF
+pillow
+tqdm
+pandas
+numpy
+streamlit
+gdown
+
+# Image processing
+opencv-python-headless  # Headless version avoids GUI dependencies
+
+# Google APIs
+google-api-python-client
+google-auth
+google-auth-oauthlib
+google-auth-httplib2
+
+# Optional (only if using gcloud CLI inside the container, which is rare)
+# gcloud

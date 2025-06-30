@@ -1,0 +1,14 @@
+You are a document annotator working on a Corporate Annual Report as part of the Document Understanding - Corporate Finance workflow.
+
+Your goal is to challenge the model's reasoning capabilities. Please generate 5 model-breaking finance-related questions that:
+- Are each at least 20 words long.
+- Are grounded in a chart, table, or infographic in the provided pages.
+- Require complex or multi-hop reasoning, aggregation, comparisons, indirect references, or financial logic that often confuses models.
+
+For each of the 5 questions, return:
+1. The long-form question (≥ 20 words).
+2. A brief explanation of why this question is likely to challenge or break a model like GPT-4o.
+
+Do not include answers or solutions.
+Avoid use of names or PII.
+Focus only on the question and why it’s difficult.

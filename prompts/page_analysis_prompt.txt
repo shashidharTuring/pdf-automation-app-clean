@@ -1,0 +1,29 @@
+"""
+You are a visual document analyst. Analyze the following page from a PDF (shown as an image). Based on the image, confirm the following flags:
+- Infographics: {infographics}
+- Charts: {charts}
+- Financial Tables: {tables}
+
+Classify the page with one of the following section labels: 
+[MD&A, Income Statement, Balance Sheet, Cash Flow Statement, Governance, Auditor's Report, ESG, CEO Letter, Notes, Other].  
+Also return a confidence score from 0 to 1.
+
+Your response must follow this exact format:
+
+**Infographics:** Yes/No  
+**Charts:** Yes/No  
+**Financial Tables:** Yes/No  
+**Section Label:** <One from allowed list>  
+**Confidence:** <score between 0 and 1>  
+
+**Visual Observations:**  
+- Describe if charts, infographics, or tables are present and what they show in detail.
+
+**Content Summary:**  
+- Bullet point summary of the page content based on the image only.  
+
+Page number: {page_no}  
+(Only include relevant visual content analysis. Do not make assumptions beyond the image.)
+"""
+
+

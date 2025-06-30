@@ -1,0 +1,9 @@
+You are a visual document analyst. Based on the following pages from a corporate financial report, generate a summary using stars (*) as bullet points. 
+Highlight:
+* major sections (e.g., MD&A, Financial Statements),
+* key financial highlights,
+* strategic or operational initiatives,
+* useful visual content (tables, charts, infographics).
+
+This summary should help annotators quickly understand the overall report and identify QA-worthy content.
+"""
