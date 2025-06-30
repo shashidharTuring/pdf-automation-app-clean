@@ -23,7 +23,20 @@ catalog_df = pd.read_csv("pdf_catalog.csv")
 
 # --- Constants ---
 DRIVE_FOLDER_ID = "1zRSbrOpugIJBPpw2aTsjYGRJcPIEZMJh"  # Replace with your folder ID
-SERVICE_ACCOUNT_FILE = "turing-genai-ws-58339643dd3f.json"
+# SERVICE_ACCOUNT_FILE = "turing-genai-ws-58339643dd3f.json"
+
+import json
+from google.oauth2 import service_account
+
+import streamlit as st
+
+if "GOOGLE_APPLICATION_CREDENTIALS_JSON" in st.secrets:
+    creds_dict = json.loads(st.secrets["GOOGLE_APPLICATION_CREDENTIALS_JSON"])
+    credentials = service_account.Credentials.from_service_account_info(creds_dict)
+else:
+    credentials = service_account.Credentials.from_service_account_file("turing-genai-ws-58339643dd3f.json")
+
+
 
 # --- PDF input field ---
 pdf_name = st.text_input("Enter PDF name (e.g., TSX_OGD_2012):")
@@ -50,11 +63,16 @@ with col2:
 
 # --- Google Drive Search Utility ---
 def get_drive_file_id_by_name(file_name):
-    creds = service_account.Credentials.from_service_account_file(
-        SERVICE_ACCOUNT_FILE,
-        scopes=["https://www.googleapis.com/auth/drive.readonly"]
-    )
+    # creds = service_account.Credentials.from_service_account_file(
+    #     SERVICE_ACCOUNT_FILE,
+    #     scopes=["https://www.googleapis.com/auth/drive.readonly"]
+    # )
+    # service = build("drive", "v3", credentials=creds)
+
+    creds = credentials
     service = build("drive", "v3", credentials=creds)
+
+    
     results = service.files().list(
         q=f"name = '{file_name}' and '{DRIVE_FOLDER_ID}' in parents and trashed = false",
         fields="files(id, name)",

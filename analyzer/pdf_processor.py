@@ -168,9 +168,20 @@ def analyze_pdf(pdf_path, progress_callback=None, max_workers=8):
 
     # Upload to Google Drive
     try:
-        service_account_file = "turing-genai-ws-58339643dd3f.json"  # your service account JSON path
+        # service_account_file = "turing-genai-ws-58339643dd3f.json"  # your service account JSON path
+        import json
+        import streamlit as st
+        from google.oauth2 import service_account
+
+        # Load from Streamlit Cloud secrets
+        creds_dict = json.loads(st.secrets["GOOGLE_APPLICATION_CREDENTIALS_JSON"])
+        credentials = service_account.Credentials.from_service_account_info(creds_dict)
+
+        file_id = upload_file_to_drive(credentials, output_csv, folder_id)
+
+        
         folder_id = "1zRSbrOpugIJBPpw2aTsjYGRJcPIEZMJh"  # replace with your real folder ID
-        file_id = upload_file_to_drive(service_account_file, output_csv, folder_id)
+        # file_id = upload_file_to_drive(service_account_file, output_csv, folder_id)
         print(f"✅ Uploaded to Google Drive: file ID = {file_id}")
     except Exception as e:
         print(f"❌ Upload failed: {e}")
