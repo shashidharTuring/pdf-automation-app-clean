@@ -97,7 +97,9 @@ if st.session_state.get("start_analysis", False) and not st.session_state.get("s
     if file_id:
         st.success("✅ Found existing results on Google Drive. Downloading...")
         os.makedirs("drive_outputs", exist_ok=True)
-        download_file_from_drive(SERVICE_ACCOUNT_FILE, file_id, local_csv_path)
+        # download_file_from_drive(SERVICE_ACCOUNT_FILE, file_id, local_csv_path)
+        download_file_from_drive(file_id, local_csv_path)
+
         st.rerun()
     else:
         # Get Drive link for PDF
